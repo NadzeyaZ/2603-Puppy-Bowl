@@ -1,0 +1,49 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#app {
+  margin: 10px;
+}
+
+h1 {
+  text-align: center;
+  padding: 1rem;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  font-size: 1rem;
+  margin: 5px;
+  padding: 5px;
+  border: 0.5px solid black;
+}
+
+li:hover {
+  background: #eee;
+}
+
+li a {
+  text-decoration: none;
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+puppy {
+  margin: 10px;
+}
+
+.puppy img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+p {
+  margin: 5px;
+}
