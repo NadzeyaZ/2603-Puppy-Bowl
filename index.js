@@ -97,15 +97,18 @@ function PuppyDetails() {
     <p><strong>Name:</strong> ${selectedPlayer.name}</p>
     <p><strong>ID:</strong>: ${selectedPlayer.id}</p>
     <p><strong>Breed:</strong> ${selectedPlayer.breed}</p>
-    <p><strong>Team:</strong> ${selectedPlayer.team.name}</p>
+    <p><strong>Team:</strong> ${selectedPlayer.team?.name ?? "No team"}</p>
     <p><strong>Status:</strong> ${selectedPlayer.status}</p>
     <button>Remove from roaster</button>
   `;
+  $puppy.querySelector("button").addEventListener("click", () => {
+    removePlayer(selectedPlayer.id);
+  });
   return $puppy;
 }
 // NewPuppyForm;
 function NewPuppyForm() {
-  const $form = document.createElement($form);
+  const $form = document.createElement("form");
   $form.innerHTML = `
     <label>
       Name
@@ -116,15 +119,31 @@ function NewPuppyForm() {
       <input name="breed" required />
     </label>
     <label>
-      Breed
-      <input name="breed" required />
+      Status
+      <select name="status">
+      <option value="">--Please choose an option--</option>
+        <option value="bench">bench</option>
+        <option value="field">field</option>
+      </select>
     </label>
     <label>
       Image URL
-      <input name="imageUrl" required />
+      <input name="imageUrl" />
     </label>
-    <button>Invite artist</button>
+    <button>Invite puppy</button>
   `;
+  $form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const data = new FormData($form);
+    addPlayer({
+      name: data.get("name"),
+      breed: data.get("breed"),
+      imageUrl: data.get("imageUrl"),
+      status: data.get("status"),
+    });
+  });
+  return $form;
 }
 
 // === Render ===
@@ -148,6 +167,7 @@ function render() {
 
   $app.querySelector("PuppiesList").replaceWith(PuppiesList());
   $app.querySelector("PuppyDetails").replaceWith(PuppyDetails());
+  $app.querySelector("NewPuppyForm").replaceWith(NewPuppyForm());
 }
 
 async function init() {

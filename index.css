@@ -8,9 +8,17 @@
   margin: 10px;
 }
 
+main {
+  display: flex;
+  flex-direction: row;
+}
+
 h1 {
-  text-align: center;
+  /* text-align: center; */
   padding: 1rem;
+}
+h2 {
+  padding: 0.5rem;
 }
 
 ul {
@@ -34,8 +42,8 @@ li a {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-puppy {
-  margin: 10px;
+.puppy {
+  padding: 0.5rem;
 }
 
 .puppy img {
@@ -45,5 +53,11 @@ puppy {
 }
 
 p {
-  margin: 5px;
+  margin: 0.5rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
